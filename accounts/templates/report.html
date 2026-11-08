@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: Arial;
+            padding: 20px;
+
+        }
+        table{
+            width: 100%;
+            border-collapse:collapse ;
+            margin-top: 15px;
+        }
+        th, td{
+            border: 1px solid #333;
+            padding: 8px;
+            font-size: 13px;
+            text-align: left;
+        }
+        th{
+            background: #1a3a5c;
+            color: white;
+        }
+        .header{
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            border-bottom:3px solid #000 ;
+            padding-bottom:10px;
+            margin-bottom: 15px;
+
+        }
+        .header img{
+            width: 110px;
+            height: 110px;
+            object-fit: contain;
+            background: #000;
+            padding: 5px;
+            border-radius: 8px;
+
+        }
+        .header h1{
+            margin: 0;
+            font-size: 26px;
+        }
+        .header p{
+            margin: 5px 0 0 0;
+            font-size: 14px;
+            color: #333;
+        }
+        a{
+            text-decoration: none;
+            font-size: 14px;
+            color: black ;
+            
+        }
+        table {
+            display: block;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        @media print{
+            .no-print{
+                display: none;
+            }
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .header h2 {
+                font-size: 20px;
+            }
+
+            .header img {
+                width: 70px;
+                height: 70px;
+            }
+
+            a, button {
+                display: inline-block;
+                margin-bottom: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+    <img src="/static/images/IMG.jpg" alt="" style="width: 80px; height: 80px;">
+    <h2>Nasiru Abubakar and Sons Nig Ltd</h2>
+    </div>
+    <button class="no-print" onclick="window.print()">🖨 print/ Save PDF</button>
+    <a class="no-print" href="/dashboard/"> Back to Dashboard</a>
+    <table>
+        <tr><th>Date</th><th>Truck</th><th>CompanyName</th><th>Driver</th><th>From - To</th><th>Goods</th><th>Charge</th></tr>
+        {% for trip in trips %}
+        <tr>
+            <td>{{ trip.date }}</td>
+            <td>{{ trip.truck }}</td>
+            <td>{{ trip.CompanyName }}</td>
+            <td>{{ trip.Driver }}</td>
+            <td>{{ trip.FromLocation }} - {{ trip.ToLocation }}</td>
+            <td>{{ trip.goods }}</td>
+            <td>₦{{ trip.TransportCharge }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

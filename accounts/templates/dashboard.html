@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body{
+            background: #f2f2f2;
+        }
+        .header{
+            background: #1a3a5c;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header h2{
+            font-size: 20px;
+        }
+        .header a{
+            color: white;
+            text-decoration: none;
+            background: #e74c3c;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .container{
+            padding: 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+        .cards{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .card{
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .card h3{
+            color:#888;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        .card p{
+            font-size: 24px;
+            font-weight: bold;
+            color: #1a3a5c;
+        }
+        .card.green p{
+            color: #27ae60;
+        }
+        .card.red p{
+            color: #e74c3c;
+        }
+        .card.orange p{
+            color: #e67e22;
+        }
+        .box{
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .box h3{
+            margin-bottom: 15px;
+            color: #1a3a5c;
+        }
+        table{
+            width: 100%;
+            border-collapse:collapse ;
+        }
+        th, td{
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+            font-size: 14px;
+        }
+        th{
+            background: #f8f9fa;
+        }
+        .btns{
+            margin: 20px 0;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .btns a{
+            background: #1a3a5c;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .btns a:nth-child(2){
+            background: #27ae60;
+        }
+        .btns a:nth-child(3){
+            background: #e67e22;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .header h2 {
+                font-size: 18px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            .btns {
+                gap: 8px;
+            }
+
+            .btns a {
+                flex: 1 1 calc(50% - 8px);
+                min-width: 140px;
+                text-align: center;
+            }
+
+            .box {
+                overflow-x: auto;
+            }
+
+            table {
+                min-width: 720px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 16px;
+            }
+
+            .header a {
+                width: 100%;
+                text-align: center;
+            }
+
+            .btns a {
+                flex: 1 1 100%;
+            }
+
+            .card p {
+                font-size: 20px;
+            }
+
+            th, td {
+                font-size: 12px;
+                padding: 8px 6px;
+            }
+        }
+    </style>
+
+</head>
+<body>
+<div class="header">
+    <h2>Nasiru Abubakar and Sons Nig Ltd <br> <small style="font-weight: normal; font-size: 13px;">Transportation Record Management System</small></h2>
+    <a href="/logout/">Logout</a>
+</div>
+<div class="container">
+    <div class="btns">
+        <a href="/nasiru-admin/transport/trip/add/">+Add New Trip</a>
+        <a href="/nasiru-admin/transport/payment/add/">+Add payment</a>
+        {% if user.is_superuser %}
+        <a href="/nasiru-admin/">Open Admin</a>
+        {% endif %}
+        <a href="/report/" style="background: #333;">📄 View Full Report</a>
+    </div>
+<div class="cards">
+    <div class="card">
+        <h3>Total Trucks</h3>
+        <p>{{ total_trucks }}</p>
+    </div>
+    <div class="card">
+        <h3>Total Drivers</h3>
+        <p>{{ total_drivers }}</p>
+
+    </div>
+    <div class="card orange">
+        <h3>Total Trips</h3>
+        <p>{{ total_trips }}</p>
+
+    </div> 
+    <div class="card green">
+     <h3>Total Paid</h3>
+     <p>₦{{ total_paid }}</p>
+    </div>  
+    <div class="card red">
+        <h3>Outstanding</h3>
+        <p>₦{{ total_outstanding }}</p>
+    </div>
+</div>
+<div class="box" style="margin-bottom: 20px;">
+    <h3>Recent Trips</h3>
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Truck</th>
+             <th>CompanyName</th>
+            <th>Driver</th>
+            <th>From - To</th>
+            <th>Goods</th>
+            <th>Charge</th>
+            <th>Receipt</th>
+           
+        </tr>
+        {% for trip in recent_trips %}
+        <tr>
+            <td>{{ trip.date }}</td>
+            <td>{{ trip.truck }}</td>
+             <td>{{ trip.CompanyName }}</td>
+            <td>{{ trip.Driver }}</td>
+            <td>{{ trip.FromLocation }} - {{ trip.ToLocation }}</td>
+            <td>{{ trip.goods }}</td>
+            <td>₦{{ trip.TransportCharge }}</td>
+            <td><a href="/receipt/{{ trip.id }}/" target="_blank" style="color: #1a3a5c; font-weight: bold; text-decoration: none;">Print Receipt</a></td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="7">No trips yet click Add New Trip </td></tr>
+        {% endfor %}
+    </table>
+</div>
+<div class="box">
+    <h3>Recent Payments</h3>
+    <table>
+        <tr>
+            <th>Date &amp; Time</th>
+            <th>Trip</th>
+            <th>Amount</th>
+            <th>Method</th>
+            <th>Balance</th>
+            <th>Action</th>
+        </tr>
+        {% for payment in recent_payments %}
+        <tr>
+            <td>
+                {% if payment.payment_datetime %}
+                    {{ payment.payment_datetime|date:"d M Y" }}<br>{{ payment.payment_datetime|time:"H:i:s A" }}
+                {% elif payment.PaymentDate %}
+                    {{ payment.PaymentDate|date:"d M Y" }}
+                {% else %}
+                    N/A
+                {% endif %}
+            </td>
+            <td>{{ payment.Trip }}</td>
+            <td>₦{{ payment.AmountPaid }}</td>
+            <td>{{ payment.PaymentMethod }}</td>
+            <td>₦{{ payment.Trip.BalanceToPay }}</td>
+            <td>
+                {% if user.is_superuser %}
+                    <a href="/nasiru-admin/transport/payment/{{ payment.id }}/change/" style="color: #1a3a5c; font-weight: bold;text-decoration: none;">Edit</a>
+                {% else %}
+                    View Only
+                {% endif %}
+            </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="6">No payment records yet.</td></tr>
+        {% endfor %}
+    </table>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,146 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: Arial;
+            background: #1a3a5f;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .box{
+            background: white;
+            width: 100%;
+            max-width: 400px;
+            padding: 30px 28px;
+            border-radius: 14px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.35) ;
+            text-align: center;
+        }
+        
+        button{
+            width: 100%;
+            padding: 12px;
+            background: #1a3a5f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .error{
+            background: #ffe0e0;
+            color: #c0392b;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 13px;
+            margin: 12px 0;
+        }
+        h2{
+            text-align: center;
+        }
+        .box img{
+            width: 110px !important;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #fff;
+            padding: 4px;
+            border: 3px solid #e67e22;
+            margin-bottom: 14px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+
+        }
+        .box h2{
+            color: #666;
+            font-size: 22px;
+            line-height: 1.3;
+            margin-bottom: 4px;
+        }
+        .box p{
+            color: #666;
+            font-size: 13.5px;
+            margin-bottom: 4px;
+        }
+        .box p+p{
+            color: #e67e22;
+            font-weight: bold;
+            font-size: 13px;
+            margin-bottom: 18px;
+        }
+        .box form{
+            text-align: left;
+        }
+        .box form input[type="text"],
+        .box form input[type="password"]{
+            width: 93%;
+            padding: 13px 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #eef4ff;
+            font-size: 15px;
+            outline: none;
+            margin-bottom: 12px;
+        }
+        .box form input:focus{
+            border-color: #1a3a5c;
+            background: #fff;
+        }
+        .box form button:hover{
+            background: #244e7a;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 16px;
+            }
+
+            .box {
+                padding: 22px 18px;
+                max-width: 100%;
+            }
+
+            .box img {
+                width: 90px !important;
+                height: 90px;
+            }
+
+            .box h2 {
+                font-size: 19px;
+            }
+
+            .box p {
+                font-size: 12.5px;
+            }
+
+            .box form input[type="text"],
+            .box form input[type="password"] {
+                width: 93%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img src="{% static 'images/IMG.jpg' %}" alt="" style="width: 110px; height: 110px; border-radius: 50%;margin-bottom: 10px;">
+        <h2>Nasiru Abubakar <br> and Sons Nig Ltd</h2>
+        <p>Transportation Record Management System</p><p>Staff Login Only</p>
+        {% if messages %}{% for m in messages %} <div class="error">{{ m }}</div>{% endfor %}{% endif %}
+        <form method="post">
+            {% csrf_token %}
+        <input type="text" name="username" placeholder="Username -e.g admin" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit">Login</button>    
+        </form>
+    </div>
+</body>
+</html>
