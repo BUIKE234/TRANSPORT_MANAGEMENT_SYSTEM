@@ -103,7 +103,7 @@
     <button class="no-print" onclick="window.print()">🖨 print/ Save PDF</button>
     <a class="no-print" href="/dashboard/"> Back to Dashboard</a>
     <table>
-        <tr><th>Date</th><th>Truck</th><th>CompanyName</th><th>Driver</th><th>From - To</th><th>Goods</th><th>Charge</th></tr>
+        <tr><th>Date</th><th>Truck</th><th>CompanyName</th><th>Driver</th><th>From - To</th><th>Goods</th><th>Charge</th><th>AdvancedPayment</th><th>BalanceToPay</th></tr>
         {% for trip in trips %}
         <tr>
             <td>{{ trip.date }}</td>
