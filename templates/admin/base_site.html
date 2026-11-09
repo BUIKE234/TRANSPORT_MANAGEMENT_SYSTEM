@@ -24,6 +24,10 @@
         font-family: "Segoe UI", sans-serif;
     }
 
+    #container {
+        padding: 24px 18px 30px;
+    }
+
     #header {
         background: linear-gradient(90deg, #0b1728 0%, #1a2d4d 45%, #0d1d33 100%);
         border-bottom: 4px solid var(--nasiru-gold);
@@ -72,6 +76,18 @@
         border: none;
     }
 
+    .module {
+        background: rgba(255,255,255,0.7);
+        border: 1px solid rgba(11,31,58,0.08);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 12px 30px rgba(15, 26, 42, 0.06);
+    }
+
+    .module th, .module td {
+        padding: 12px 14px;
+    }
+
     .button, input[type=submit], input[type=button], .submit-row input {
         background: linear-gradient(180deg, var(--nasiru-gold) 0%, #b57b06 100%);
         border: none;
@@ -108,6 +124,14 @@
         box-shadow: 0 12px 28px rgba(17, 29, 45, 0.08);
         border-radius: 14px;
         border: 1px solid rgba(15, 26, 42, 0.08);
+    }
+
+    .dashboard #content {
+        padding-top: 10px;
+    }
+
+    .dashboard .module table {
+        width: 100%;
     }
 
     @media (max-width: 768px) {

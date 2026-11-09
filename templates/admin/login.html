@@ -18,18 +18,21 @@
 
     #content {
         width: min(560px, 100%);
+        max-width: 560px;
         background: rgba(255,255,255,0.74);
         border: 1px solid rgba(11,31,58,0.08);
         border-radius: 24px;
         box-shadow: 0 24px 60px rgba(20, 33, 48, 0.18);
         padding: 0;
         overflow: hidden;
+        margin: 0 auto;
     }
 
     .login-box {
         display: flex;
         flex-direction: column;
         min-height: 100%;
+        width: 100%;
     }
 
     .login-brand {
@@ -84,6 +87,17 @@
 
     #login-form {
         width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    #login-form p {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        margin: 0 0 18px;
     }
 
     .login .form-row {
@@ -94,17 +108,21 @@
         width: 100%;
     }
 
-    .login .form-row label {
+    .login .form-row label,
+    #login-form label {
         display: block;
         margin-bottom: 8px;
         color: #163a67;
         font-weight: 700;
+        font-size: 0.92rem;
     }
 
     .login .form-row p {
         margin: 0;
     }
 
+    #login-form input[type=text],
+    #login-form input[type=password],
     input[type=text], input[type=password] {
         width: 100%;
         padding: 12px 14px;
