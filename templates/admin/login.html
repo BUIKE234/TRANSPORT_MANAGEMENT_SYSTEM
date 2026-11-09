@@ -82,6 +82,10 @@
         padding: 30px 30px 24px;
     }
 
+    #login-form {
+        width: 100%;
+    }
+
     .login .form-row {
         margin-bottom: 18px;
     }
@@ -95,6 +99,10 @@
         margin-bottom: 8px;
         color: #163a67;
         font-weight: 700;
+    }
+
+    .login .form-row p {
+        margin: 0;
     }
 
     input[type=text], input[type=password] {
@@ -188,7 +196,7 @@
             <img src="{% static 'images/IMG.jpg' %}" alt="Nasiru Abubakar and sons logo" />
         </div>
         <h1>Nasiru Abubakar and sons nig LTD</h1>
-        <p>Premium transport management system</p>
+        <p> transport management system</p>
     </div>
 
     <div class="login-form-wrap">
@@ -198,7 +206,7 @@
             </p>
         {% endif %}
 
-        {% if user.is_authenticated %}
+        {% if user.is_authenticated and not user.is_staff %}
             <p class="errornote">
                 {% blocktranslate trimmed %}You are authenticated as {{ username }}, but are not authorized to access this page. Please log in with a different account.{% endblocktranslate %}
             </p>
