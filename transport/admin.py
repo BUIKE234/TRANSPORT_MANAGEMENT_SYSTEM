@@ -3,11 +3,19 @@ from django.contrib.admin import AdminSite
 from .models import Truck, Driver,Trip,Payment
 
 class NasiruAdminSite(AdminSite):
-    site_header ="Nasiru Abubakar and Sons Nig Ltd"
-    site_title="Transport Admin"
-    index_title="Transportation Record Management System"
+    site_header = "Nasiru Abubakar and sons nig LTD"
+    site_title = "Nasiru Abubakar Admin page"
+    index_title = "Welcome to Nasiru Abubakar and sons Transport management system"
     site_url = "/dashboard"
-custom_admin_site =NasiruAdminSite(name='nasiru_admin')
+
+custom_admin_site = NasiruAdminSite(name='nasiru_admin')
+custom_admin_site.site_header = "Nasiru Abubakar and sons nig LTD"
+custom_admin_site.site_title = "Nasiru Abubakar Admin page"
+custom_admin_site.index_title = "Welcome to Nasiru Abubakar and sons Transport management system"
+
+admin.site.site_header = "Nasiru Abubakar and sons nig LTD"
+admin.site.site_title = "Nasiru Abubakar Admin page"
+admin.site.index_title = "Welcome to Nasiru Abubakar and sons Transport management system"
 
 class PaymentInline(admin.TabularInline):
     model = Payment

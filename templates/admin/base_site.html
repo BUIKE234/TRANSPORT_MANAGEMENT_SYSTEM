@@ -1,0 +1,117 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block title %}{{ title }} | Nasiru Abubakar and sons nig LTD{% endblock %}
+
+{% block extrastyle %}
+{{ block.super }}
+<style>
+    :root {
+        --nasiru-blue: #0b1f3a;
+        --nasiru-blue-2: #153a6b;
+        --nasiru-orange: #f39c12;
+        --nasiru-orange-2: #ffb347;
+        --nasiru-light: #f4f8ff;
+        --nasiru-white: #ffffff;
+        --nasiru-text: #1f2937;
+        --nasiru-muted: #667085;
+    }
+
+    body {
+        background: linear-gradient(135deg, #eef5ff 0%, #ddeaf9 100%);
+        color: var(--nasiru-text);
+    }
+
+    #header {
+        background: linear-gradient(90deg, var(--nasiru-blue) 0%, var(--nasiru-blue-2) 100%);
+        border-bottom: 4px solid var(--nasiru-orange);
+        box-shadow: 0 6px 18px rgba(11, 31, 58, 0.18);
+    }
+
+    #branding h1, #branding h1 a {
+        color: var(--nasiru-white) !important;
+        font-size: 1.4rem;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+    }
+
+    #branding h1 a {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    #branding h1 a::before {
+        content: "N";
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--nasiru-orange) 0%, #e38a00 100%);
+        color: var(--nasiru-blue);
+        font-weight: 800;
+        font-size: 1rem;
+    }
+
+    #site-name {
+        margin: 0;
+    }
+
+    .module h2, .module caption, .dashboard .module th,
+    .module .collapse-toggle {
+        background: linear-gradient(90deg, var(--nasiru-blue) 0%, var(--nasiru-blue-2) 100%);
+        color: var(--nasiru-white) !important;
+    }
+
+    .button, input[type=submit], input[type=button], .submit-row input {
+        background: linear-gradient(180deg, var(--nasiru-orange) 0%, #df8d00 100%);
+        border: none;
+        color: var(--nasiru-white);
+        border-radius: 10px;
+        font-weight: 700;
+        padding: 0.6rem 1rem;
+        box-shadow: 0 6px 16px rgba(243, 156, 18, 0.25);
+        transition: all 0.2s ease-in-out;
+    }
+
+    .button:hover, input[type=submit]:hover, input[type=button]:hover, .submit-row input:hover {
+        background: linear-gradient(180deg, var(--nasiru-orange-2) 0%, var(--nasiru-orange) 100%);
+        transform: translateY(-1px);
+    }
+
+    .object-tools a, .paginator a {
+        color: var(--nasiru-blue) !important;
+        border-radius: 8px;
+    }
+
+    .breadcrumbs {
+        background: rgba(255,255,255,0.65);
+        border: 1px solid rgba(11,31,58,0.08);
+        border-radius: 10px;
+    }
+
+    a:link, a:visited {
+        color: var(--nasiru-blue-2);
+    }
+
+    .login #container,
+    .login #content {
+        background: transparent;
+    }
+
+    .login .main {
+        background: rgba(255, 255, 255, 0.72);
+        backdrop-filter: blur(8px);
+    }
+</style>
+{% endblock %}
+
+{% block branding %}
+<h1 id="site-name">
+    <a href="{% url 'admin:index' %}">Nasiru Abubakar and sons nig LTD</a>
+</h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
