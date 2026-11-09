@@ -49,8 +49,11 @@
         .box img{
             width: 110px !important;
             height: 110px;
-            border-radius: 50%;
+            min-width: 110px;
+            min-height: 110px;
+            border-radius: 50% !important;
             object-fit: cover;
+            aspect-ratio: 1 / 1;
             background: #fff;
             padding: 4px;
             border: 3px solid #e67e22;
@@ -58,7 +61,7 @@
             display: block;
             margin-left: auto;
             margin-right: auto;
-
+            overflow: hidden;
         }
         .box h2{
             color: #666;
@@ -131,7 +134,7 @@
 </head>
 <body>
     <div class="box">
-        <img src="{% static 'images/IMG.jpg' %}" alt="" style="width: 110px; height: 110px; border-radius: 50%;margin-bottom: 10px;">
+        <img src="{% static 'images/IMG.jpg' %}" alt="Company logo">
         <h2>Nasiru Abubakar <br> and Sons Nig Ltd</h2>
         <p>Transportation Record Management System</p><p>Staff Login Only</p>
         {% if messages %}{% for m in messages %} <div class="error">{{ m }}</div>{% endfor %}{% endif %}

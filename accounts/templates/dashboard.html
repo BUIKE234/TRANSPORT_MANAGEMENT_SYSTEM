@@ -222,6 +222,8 @@
             <th>From - To</th>
             <th>Goods</th>
             <th>Charge</th>
+            <th>AdvancedPayments</th>
+            th>BalanceToPay</th>
             <th>Receipt</th>
            
         </tr>
@@ -234,6 +236,8 @@
             <td>{{ trip.FromLocation }} - {{ trip.ToLocation }}</td>
             <td>{{ trip.goods }}</td>
             <td>₦{{ trip.TransportCharge }}</td>
+            <td>₦{{ trip.AdvancedPayments }}</td>
+            <td>₦{{ trip.BalanceToPay }}</td>
             <td><a href="/receipt/{{ trip.id }}/" target="_blank" style="color: #1a3a5c; font-weight: bold; text-decoration: none;">Print Receipt</a></td>
         </tr>
         {% empty %}
@@ -249,7 +253,9 @@
             <th>Trip</th>
             <th>Amount</th>
             <th>Method</th>
+            <th>AdvancedPayment</th>
             <th>Balance</th>
+
             <th>Action</th>
         </tr>
         {% for payment in recent_payments %}
@@ -266,6 +272,7 @@
             <td>{{ payment.Trip }}</td>
             <td>₦{{ payment.AmountPaid }}</td>
             <td>{{ payment.PaymentMethod }}</td>
+            <td>{{ payment.Trip.AdvancedPayment }}</td>
             <td>₦{{ payment.Trip.BalanceToPay }}</td>
             <td>
                 {% if user.is_superuser %}
