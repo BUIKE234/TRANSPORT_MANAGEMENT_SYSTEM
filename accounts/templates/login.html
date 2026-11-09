@@ -12,18 +12,20 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
-            position: fixed;
+            padding: 24px;
+            box-sizing: border-box;
         }
         .box{
             background: white;
-            width: 100%;
-            max-width: 400px;
+            width: min(92vw, 420px);
+            max-width: 420px;
             padding: 30px 28px;
             border-radius: 14px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.35) ;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.35);
             text-align: center;
+            box-sizing: border-box;
         }
         
         button{
