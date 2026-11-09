@@ -5,7 +5,7 @@
 {{ block.super }}
 <style>
     body {
-        background: radial-gradient(circle at top, #f3f8ff 0%, #dfeafc 42%, #cfe0f9 100%);
+        background: radial-gradient(circle at top, #f7f2e8 0%, #ede5d2 28%, #dfe7ef 72%, #d0dbe8 100%);
     }
 
     #container {
@@ -17,11 +17,11 @@
     }
 
     #content {
-        width: min(520px, 100%);
-        background: rgba(255,255,255,0.8);
+        width: min(560px, 100%);
+        background: rgba(255,255,255,0.74);
         border: 1px solid rgba(11,31,58,0.08);
-        border-radius: 20px;
-        box-shadow: 0 24px 60px rgba(21, 58, 107, 0.18);
+        border-radius: 24px;
+        box-shadow: 0 24px 60px rgba(20, 33, 48, 0.18);
         padding: 0;
         overflow: hidden;
     }
@@ -33,70 +33,85 @@
     }
 
     .login-brand {
-        background: linear-gradient(135deg, #0b1f3a 0%, #153a6b 100%);
+        background: linear-gradient(135deg, #0d1b2d 0%, #173d6b 45%, #0f2444 100%);
         color: #fff;
-        padding: 28px 24px;
+        padding: 30px 24px 26px;
         text-align: center;
-        border-bottom: 4px solid #f39c12;
+        border-bottom: 4px solid #d4a64a;
     }
 
-    .login-brand .brand-mark {
-        display: inline-flex;
+    .login-brand .logo-box {
+        width: 82px;
+        height: 82px;
+        margin: 0 auto 16px;
+        border-radius: 20px;
+        background: rgba(255,255,255,0.12);
+        border: 2px solid rgba(212,166,74,0.9);
+        display: flex;
         align-items: center;
         justify-content: center;
-        width: 56px;
-        height: 56px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, #f39c12 0%, #d98a00 100%);
-        color: #0b1f3a;
-        font-weight: 800;
-        font-size: 1.6rem;
-        margin-bottom: 12px;
+        box-shadow: 0 14px 28px rgba(212, 166, 74, 0.2);
+    }
+
+    .login-brand img {
+        width: 68px;
+        height: 68px;
+        object-fit: cover;
+        border-radius: 16px;
+        background: #fff;
     }
 
     .login-brand h1 {
         margin: 0;
-        font-size: 1.5rem;
+        font-size: clamp(1.2rem, 2vw, 1.8rem);
         color: #fff;
+        line-height: 1.3;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
     }
 
     .login-brand p {
-        margin: 8px 0 0;
-        color: rgba(255,255,255,0.8);
-        font-size: 0.9rem;
-        letter-spacing: 0.04em;
+        margin: 12px 0 0;
+        font-size: 0.8rem;
+        color: rgba(255,255,255,0.82);
+        letter-spacing: 0.18em;
         text-transform: uppercase;
     }
 
     .login-form-wrap {
-        padding: 28px 30px 24px;
+        padding: 30px 30px 24px;
     }
 
-    .form-row {
+    .login .form-row {
         margin-bottom: 18px;
+    }
+
+    .login .form-row > div {
+        width: 100%;
     }
 
     .login .form-row label {
         display: block;
         margin-bottom: 8px;
-        color: #153a6b;
-        font-weight: 600;
+        color: #163a67;
+        font-weight: 700;
     }
 
     input[type=text], input[type=password] {
         width: 100%;
         padding: 12px 14px;
-        border: 1px solid #d0d9e8;
-        border-radius: 10px;
+        border: 1px solid #cfd9ea;
+        border-radius: 12px;
         background: #fff;
-        color: var(--nasiru-text);
+        color: #1f2937;
         box-sizing: border-box;
-        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        transition: all 0.2s ease;
+        font-size: 1rem;
     }
 
     input[type=text]:focus, input[type=password]:focus {
-        border-color: #f39c12;
-        box-shadow: 0 0 0 3px rgba(243, 156, 18, 0.18);
+        border-color: #d4a64a;
+        box-shadow: 0 0 0 4px rgba(212, 166, 74, 0.18);
         outline: none;
     }
 
@@ -106,13 +121,16 @@
 
     .submit-row input {
         width: 100%;
-        padding: 12px 16px;
+        padding: 14px 18px;
         font-size: 1rem;
-        border-radius: 10px;
+        border-radius: 12px;
+        background: linear-gradient(180deg, #d4a64a 0%, #b57b06 100%);
+        color: #111827;
+        font-weight: 800;
     }
 
     .help, .errornote, .login .errorlist {
-        border-radius: 8px;
+        border-radius: 10px;
         margin: 10px 0;
     }
 
@@ -120,6 +138,45 @@
         background: rgba(190, 36, 36, 0.08);
         color: #8a1e1e;
         border-left: 4px solid #b42318;
+        padding: 10px 12px;
+    }
+
+    @media (max-width: 768px) {
+        #container {
+            padding: 20px 12px;
+        }
+
+        #content {
+            border-radius: 18px;
+        }
+
+        .login-brand {
+            padding: 22px 16px 18px;
+        }
+
+        .login-brand .logo-box {
+            width: 68px;
+            height: 68px;
+        }
+
+        .login-brand img {
+            width: 54px;
+            height: 54px;
+        }
+
+        .login-brand h1 {
+            font-size: 1.1rem;
+            letter-spacing: 0.02em;
+        }
+
+        .login-brand p {
+            font-size: 0.7rem;
+            letter-spacing: 0.12em;
+        }
+
+        .login-form-wrap {
+            padding: 22px 18px 18px;
+        }
     }
 </style>
 {% endblock %}
@@ -127,9 +184,11 @@
 {% block content %}
 <div class="login-box">
     <div class="login-brand">
-        <div class="brand-mark">N</div>
+        <div class="logo-box">
+            <img src="{% static 'images/IMG.jpg' %}" alt="Nasiru Abubakar and sons logo" />
+        </div>
         <h1>Nasiru Abubakar and sons nig LTD</h1>
-        <p>Transport management system</p>
+        <p>Premium transport management system</p>
     </div>
 
     <div class="login-form-wrap">
