@@ -113,8 +113,8 @@
             <td>{{ trip.FromLocation }} - {{ trip.ToLocation }}</td>
             <td>{{ trip.goods }}</td>
             <td>₦{{ trip.TransportCharge }}</td>
-            <td>{{ payment.Trip.AdvancedPayment }}</td>
-            <td>₦{{ payment.Trip.BalanceToPay }}</td>
+            <td>{{ Trip.AdvancedPayment }}</td>
+            <td>₦{{ Trip.BalanceToPay }}</td>
         </tr>
         {% endfor %}
     </table>

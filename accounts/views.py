@@ -16,7 +16,7 @@ def login_view(request):
             login(request, user)
             return redirect('dashboard')
         else:
-            messages.error(request, 'only Admin can login. Use your superuser account')
+            messages.error(request, 'staff only can login')
     return render(request, 'login.html')     
 
 def logout_view(request):
